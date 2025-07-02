@@ -1,16 +1,32 @@
 
+import { db } from '../db';
+import { notesTable, friendsTable } from '../db/schema';
 import { type CreateNoteInput, type Note } from '../schema';
+import { eq } from 'drizzle-orm';
 
 export const createNote = async (input: CreateNoteInput): Promise<Note> => {
-    // This is a placeholder declaration! Real code should be implemented here.
-    // The goal of this handler is creating a new note/interaction for a friend.
-    // Should automatically set timestamp to current date/time.
-    // Should also update the friend's last_contacted field to the current timestamp.
-    // This maintains the relationship between interactions and contact tracking.
-    return Promise.resolve({
-        id: 0, // Placeholder ID
+  try {
+    // Insert note record
+    const result = await db.insert(notesTable)
+      .values({
         friend_id: input.friend_id,
-        text: input.text,
-        timestamp: new Date() // Auto-generated timestamp
-    } as Note);
+        text: input.text
+        // timestamp will be auto-generated via defaultNow()
+      })
+      .returning()
+      .execute();
+
+    const note = result[0];
+
+    // Update the friend's last_contacted field to the current timestamp
+    await db.update(friendsTable)
+      .set({ last_contacted: new Date() })
+      .where(eq(friendsTable.id, input.friend_id))
+      .execute();
+
+    return note;
+  } catch (error) {
+    console.error('Note creation failed:', error);
+    throw error;
+  }
 };
