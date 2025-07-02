@@ -243,11 +243,14 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-400 via-purple-500 to-indigo-600 p-4">
+      {/* Spinning Heart Favicon Indicator */}
+      <div className="heart-favicon-indicator"></div>
+      
       <div className="container mx-auto max-w-7xl">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-6xl font-black text-white mb-4 tracking-tight">
-            🌟 FRIEND ZONE 🌟
+          <h1 className="text-6xl font-black text-white mb-4 tracking-tight page-title-with-heart">
+            FRIEND ZONE 🌟
           </h1>
           <p className="text-xl text-white/90 font-semibold">
             Your Super Vibrant Personal CRM! 💫
@@ -400,7 +403,7 @@ function App() {
                         disabled={isLoading}
                         className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold text-lg py-3 rounded-full"
                       >
-                        {isLoading ? '✨ Creating...' : '🚀 Create Friend!'}
+                        {isLoading ? <span className="heart-spinner"></span> : '💖 Create Friend!'}
                       </Button>
                     </form>
                   </DialogContent>
@@ -668,7 +671,7 @@ function App() {
                         disabled={isLoading}
                         className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-bold"
                       >
-                        {isLoading ? '💫 Adding...' : '🚀 Add Note!'}
+                        {isLoading ? <span className="heart-spinner"></span> : '💝 Add Note!'}
                       </Button>
                     </form>
                   </div>
@@ -815,7 +818,7 @@ function App() {
                 disabled={isLoading}
                 className="w-full bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-bold text-lg py-3 rounded-full"
               >
-                {isLoading ? '✨ Updating...' : '🚀 Update Friend!'}
+                {isLoading ? <span className="heart-spinner"></span> : '💖 Update Friend!'}
               </Button>
             </form>
           </DialogContent>

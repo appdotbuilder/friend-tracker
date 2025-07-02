@@ -295,3 +295,206 @@ p {
     background: white;
   }
 }
+
+/* Spinning Heart Favicon Effect */
+/* Note: This requires the HTML file to be updated with the heart favicon */
+/* The following CSS creates a heart icon that can be used as a fallback */
+.heart-favicon-indicator {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  z-index: 9999;
+  pointer-events: none;
+  animation: heartbeat-spin 2s ease-in-out infinite;
+}
+
+.heart-favicon-indicator::before {
+  content: '❤️';
+  font-size: 24px;
+  display: block;
+  filter: drop-shadow(0 0 4px rgba(244, 63, 94, 0.5));
+}
+
+@keyframes heartbeat-spin {
+  0% { 
+    transform: scale(1) rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+  25% { 
+    transform: scale(1.1) rotate(90deg);
+    filter: hue-rotate(45deg);
+  }
+  50% { 
+    transform: scale(1) rotate(180deg);
+    filter: hue-rotate(90deg);
+  }
+  75% { 
+    transform: scale(1.05) rotate(270deg);
+    filter: hue-rotate(135deg);
+  }
+  100% { 
+    transform: scale(1) rotate(360deg);
+    filter: hue-rotate(180deg);
+  }
+}
+
+/* Page title with heart effect */
+.page-title-with-heart {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.page-title-with-heart::before {
+  content: '💖';
+  font-size: 1.5rem;
+  animation: heartbeat-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat-pulse {
+  0%, 100% { 
+    transform: scale(1);
+    filter: hue-rotate(0deg);
+  }
+  50% { 
+    transform: scale(1.2);
+    filter: hue-rotate(60deg);
+  }
+}
+
+/* Vibrant heart accents throughout the UI */
+.heart-accent {
+  color: var(--primary-rose);
+  animation: color-shift 3s ease-in-out infinite;
+}
+
+@keyframes color-shift {
+  0% { color: var(--primary-rose); }
+  25% { color: var(--primary-pink); }
+  50% { color: var(--primary-purple); }
+  75% { color: var(--primary-indigo); }
+  100% { color: var(--primary-rose); }
+}
+
+/* Heart-themed loading spinner */
+.heart-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  animation: heart-spin 1s linear infinite;
+}
+
+.heart-spinner::before {
+  content: '💕';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+}
+
+@keyframes heart-spin {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Enhanced vibrant heart effects */
+.heart-trail {
+  position: relative;
+  overflow: visible;
+}
+
+.heart-trail::after {
+  content: '💖✨💫';
+  position: absolute;
+  top: -10px;
+  right: -20px;
+  font-size: 12px;
+  animation: heart-trail-float 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes heart-trail-float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% { 
+    transform: translateY(-5px) rotate(10deg);
+    opacity: 1;
+  }
+}
+
+/* Floating hearts background effect */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(255, 182, 193, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 105, 180, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255, 20, 147, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+  animation: heart-background-pulse 8s ease-in-out infinite;
+}
+
+@keyframes heart-background-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+/* Sparkle effect for important buttons */
+.sparkle-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.sparkle-button::before {
+  content: '✨';
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  font-size: 10px;
+  animation: sparkle1 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.sparkle-button::after {
+  content: '💫';
+  position: absolute;
+  bottom: 15%;
+  right: 15%;
+  font-size: 8px;
+  animation: sparkle2 2.5s ease-in-out infinite 0.5s;
+  pointer-events: none;
+}
+
+@keyframes sparkle1 {
+  0%, 100% { 
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% { 
+    transform: scale(1) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+@keyframes sparkle2 {
+  0%, 100% { 
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% { 
+    transform: scale(1) rotate(-180deg);
+    opacity: 1;
+  }
+}
